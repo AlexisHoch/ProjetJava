@@ -31,6 +31,8 @@ public class DAO {
     
     
         
+        
+        
  
         public void newAccount(String disc, int zip) throws SQLException{
             
