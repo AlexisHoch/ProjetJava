@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 /**
@@ -36,16 +38,15 @@ public class DAO {
  
         public void newAccount(String disc, int zip) throws SQLException{
             
-            String sql = "INSERT INTO Customer(CUSTOMER_ID, DISCOUNT_CODE, ZIP) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Customer(CUSTOMER_ID, DISCOUNT_CODE, ZIP) VALUES ( (SELECT MAX(CUSTOMER_ID)+1 FROM CUSTOMER), ?, ?)";
                     //--------------------------------ID NAME EMAIL
             
             try(Connection myConnection = myDataSource.getConnection();
-                    PreparedStatement customerStatement = myConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+                    PreparedStatement customerStatement = myConnection.prepareStatement(sql)){
                     
-                    customerStatement.setInt(1, customerStatement.getGeneratedKeys().getInt("ID"));
-                    customerStatement.setString(2, disc);
-                    customerStatement.setInt(3, zip);
-                    
+                    customerStatement.setString(1, disc);
+                    customerStatement.setInt(2, zip);
+                    System.out.println(customerStatement.toString());
                     customerStatement.executeUpdate();
                     }
                 
@@ -64,6 +65,24 @@ public class DAO {
 		}
 		return result;
 	}
+        
+        	public void deleteCustomer(int customerId) {
+
+		// Une requête SQL paramétrée
+		String sql = "DELETE FROM CUSTOMER WHERE CUSTOMER_ID = ?";
+		try (   Connection connection = myDataSource.getConnection();
+			PreparedStatement stmt = connection.prepareStatement(sql)
+                ) {
+                        // Définir la valeur du paramètre
+			stmt.setInt(1, customerId);
+			
+			stmt.executeUpdate();
+
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			
+		}
+            }
             
                     
 }
