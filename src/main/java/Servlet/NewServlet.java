@@ -7,17 +7,19 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pedago
+ * @author Gatto
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+@WebServlet(name = "NewServlet",loadOnStartup = 1, urlPatterns = {"/ProjetJava","/CreateComptePage","/ConnexionPage"})
 public class NewServlet extends HttpServlet {
 
     /**
@@ -33,11 +35,18 @@ public class NewServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String userPath = request.getServletPath();
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("Coucou");;
         if (actionIs(request, "connexion")) {
 //		getServletConfig().getServletContext().getRequestDispatcher("/views/CreateComptePage.jsp").forward(request, response);
 	}
+        else if (actionIs(request, "creerCompt")){
+            showView("CreateComptePage.jsp",request,response);
+        }
+        else {
+            showView("ConnexionPage.jsp",request,response);
+        }
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");
@@ -51,6 +60,9 @@ public class NewServlet extends HttpServlet {
 //            out.println("</html>");
 //        }
     }
+    	private void showView(String jsp, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		getServletConfig().getServletContext().getRequestDispatcher("/views/" + jsp).forward(request, response);
+	}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -62,9 +74,9 @@ public class NewServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    private boolean actionIs(HttpServletRequest request, String action) {
+private boolean actionIs(HttpServletRequest request, String action) {
 		return action.equals(request.getParameter("action"));
-    }
+	}
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
