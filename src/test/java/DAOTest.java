@@ -5,75 +5,58 @@
  */
 
 import DAO.DAO;
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
+import static org.junit.Assert.*;
 import java.sql.SQLException;
 import javax.sql.DataSource;
-import org.hsqldb.cmdline.SqlFile;
-import org.hsqldb.cmdline.SqlToolError;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 
 /**
  *
  * @author pedago
  */
 public class DAOTest {
-    private static DataSource myDataSource;
-    private static Connection myConnection ;
+    private static DAO myDAO;
+    private DataSource myDataSource; // La source de données à utiliser
 	
-    private DAO dao;
-	public  void setUp() throws IOException, SqlToolError, SQLException {
-		// On crée la connection vers la base de test "in memory"
+    @Before
+    public void setUp() throws SQLException {
 		myDataSource = getDataSource();
-		myConnection = myDataSource.getConnection();
-		// On crée le schema de la base de test
-		executeSQLScript(myConnection, "schema.sql");
-		// On y met des données
-		executeSQLScript(myConnection, "smalltestdata.sql");		
-
-            	dao = new DAO(myDataSource);
-    }
-    private void executeSQLScript(Connection connexion, String filename)  throws IOException, SqlToolError, SQLException {
-		// On initialise la base avec le contenu d'un fichier de test
-		String sqlFilePath = DAOTest.class.getResource(filename).getFile();
-		SqlFile sqlFile = new SqlFile(new File(sqlFilePath));
-
-		sqlFile.setConnection(connexion);
-		sqlFile.execute();
-		sqlFile.closeReader();		
+		myDAO = new DAO(myDataSource);
 	}
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
+
+    @Test
+    public void numberOfCustommer() throws SQLException{
+        assertEquals(myDAO.numberOfCustomers(), 17);
     }
     
     @Test
     public void addCustomerTest() throws SQLException{
-        dao.newAccount("L", 48100);
-        assertEquals(dao.numberOfCustomers(), 1);
+        int nmcustomers = myDAO.numberOfCustomers();
+        myDAO.newAccount("L", 10096);
+        assertEquals(myDAO.numberOfCustomers(), nmcustomers+1);
     }
     
-    @After
-    public void tearDown() throws SQLException {
-        	myConnection.close(); // La base de données de test est détruite ici
-             	dao = null; // Pas vraiment utile
+    @Test
+    public void deleteCustomer() throws SQLException{
+        int nmcustomers = myDAO.numberOfCustomers();
+        myDAO.deleteCustomer(866);
+        assertEquals(myDAO.numberOfCustomers(), nmcustomers-1);
     }
+    
+
 
 
 public static DataSource getDataSource() {
-		org.hsqldb.jdbc.JDBCDataSource ds = new org.hsqldb.jdbc.JDBCDataSource();
-		ds.setDatabase("jdbc:hsqldb:mem:testcase;shutdown=true");
-		ds.setUser("sa");
-		ds.setPassword("sa");
+		org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
+		ds.setDatabaseName("sample");
+		ds.setUser("app");
+		ds.setPassword("app");
+		// The host on which Network Server is running
+		ds.setServerName("localhost");
+		// port on which Network Server is listening
+		ds.setPortNumber(1527);
 		return ds;
 
 }

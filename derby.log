@@ -1,7 +1,7 @@
-Tue Dec 04 15:45:28 CET 2018 : Apache Derby Network Server - 10.11.1.2 - (1629631) démarré et prêt à accepter les connexions sur le port 1527
+Tue Dec 04 16:00:32 CET 2018 : Apache Derby Network Server - 10.11.1.2 - (1629631) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Tue Dec 04 15:45:28 CET 2018:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0167-79ae-58a2-ffff921e39bd 
+Tue Dec 04 16:00:33 CET 2018:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0167-79bc-25e1-ffff921e39bd 
 dans le répertoire de base de données C:\Users\pedago\Documents\NetBeansProjects\ProjetJava\sample avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
 Chargé de file:/C:/Program%20Files/Java/jdk1.8.0_77/db/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -12,5 +12,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\pedago\Documents\NetBeansProjects\ProjetJava
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
-----------------------------------------------------------------
-Tue Dec 04 15:56:48 CET 2018 : fermeture du moteur Derby
