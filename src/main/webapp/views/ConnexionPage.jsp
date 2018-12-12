@@ -5,24 +5,40 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
+    <style>
+        .container{
+            width: 700px;
+            margin:  75px auto auto;
+            padding: 5px;
+            height: auto;
+        }
+        
+    </style>
     <body>
-        <h1>Hello World!</h1>
+        <h1 id="titre">Hello World! Connectez-vous!</h1>
         
         
-        
-        <form>
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Name">
+
+            <form class="container" >
+
+                <div class="form-group">
+                    <div class="form-group">
+                      <label for="inputEmail4">Email</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                      <label for="inputPassword4">Password</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
                 </div>
-                <div class="col">
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2" id="connexion">Connexion</button>
-            
-            <button type="submit" class="btn btn-primary mb-2" id="creerCompt">Créer un compte</button>
-        </form>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="connexion">Connexion</button>
+                </br>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="creerCompt">Créer un compte</button>
+            </form>
+
     </body>
 </html>
