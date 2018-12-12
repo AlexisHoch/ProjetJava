@@ -14,6 +14,7 @@
             margin:  75px auto auto;
             padding: 5px;
             height: auto;
+            
         }
         
     </style>

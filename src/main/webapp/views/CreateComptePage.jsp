@@ -21,6 +21,7 @@
         padding: 5px;
         width: 700px;
         height: auto;
+        
 
         margin : 50px auto auto;
         }
