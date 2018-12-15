@@ -83,6 +83,31 @@ public class DAO {
 			
 		}
             }
+        public Customer Customer(String email) throws SQLException {
+            Customer c = null;
+            String sql = "SELECT * FROM Customer WHERE email = ?";
+            try (Connection myConnection = myDataSource.getConnection();
+                PreparedStatement statement = myConnection.prepareStatement(sql)) {
+                statement.setString(1, email); // On fixe le 1° paramètre de la requête
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    int id = rs.getInt("CUSTOMER_ID");
+                    String dc = rs.getString("DISCOUNT_CODE");
+                    int zip = rs.getInt("ZIP");
+                    String name = rs.getString("NAME");
+                    String adress = rs.getString("ADDRESSLINE1");
+                    String adress2 = rs.getString("ADDRESSLINE2");
+                    String city = rs.getString("CITY");
+                    String state = rs.getString("STATE");
+                    String phone = rs.getString("PHONE");
+                    String fax = rs.getString("FAX");
+                    int credit = rs.getInt("CREDIT_LIMIT");
+                    c = new Customer(id, dc, zip, name, adress, adress2, city, state, phone, fax, email, credit);
+                }
+            }
+        }
+        return c;
+    }
             
                     
 }
