@@ -62,10 +62,10 @@
                 <a style="text-decoration:none; color:white;">Nom Site</a>					
             </div>				
 	</header>
-        <h1 id="titre">Hello World!</h1>
+        <h1 id="titre">Création de votre compte</h1>
         <div class="container">
             <div class="col-xs-12">
-                <form>
+                <form method="POST">
 
                       <div class="form-group">
                         <label for="inputEmail4">Email</label>
@@ -83,27 +83,31 @@
                         <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="Password">
                       </div>
                     </div>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">First and last name</span>
-                      </div>
-                      <input type="text" aria-label="First name" class="form-control">
-                      <input type="text" aria-label="Last name" class="form-control">
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputName">Nom</label>
+                                <p contenteditable="true" class="form-control" id="inputName">Joffres</p>
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="inputName">Prénom</label>
+                                <p contenteditable="true" class="form-control" id="inputFirstName">Manon</p>
+                              </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                          <label for="inputAddress">Addresse</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
+                        <label for="inputCity">Ville</label>
                         <input type="text" class="form-control" id="inputCity">
                       </div>
                       <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
+                        <label for="inputState">Etat</label>
                         <select id="inputState" class="form-control">
-                          <option selected>Choose...</option>
+                          <option selected>Choisir...</option>
                           <option>...</option>
                         </select>
                       </div>
@@ -120,7 +124,7 @@
                         </label>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <input type="submit" name="action" value="Valider" class="btn btn-primary btn-lg btn-block"/>
                 </form>
             </div>
         </div>

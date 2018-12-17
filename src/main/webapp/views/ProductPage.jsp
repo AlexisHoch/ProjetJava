@@ -15,8 +15,7 @@
     </head>
     <style>
 
-        .container{
-            
+        .container{            
         padding: 5px;
         width: 700px;
         height: auto;
@@ -91,8 +90,16 @@
                     <div class="card-body">
                         <h5 class="card-title">Special title treatment</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>  
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                                </div>
+                            </div>
+                        </form>
                         <p>25.5€</p>
                       </div>
                   </div>
@@ -102,8 +109,16 @@
                     <div class="card-body">
                       <h5 class="card-title">Special title treatment</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
-                      <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                      <form method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                                </div>
+                            </div>
+                        </form>
                       <p>25.5€</p>
                     </div>
                   </div>
@@ -115,8 +130,16 @@
                     <div class="card-body">
                       <h5 class="card-title">Special title treatment</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
-                      <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                                </div>
+                            </div>
+                        </form>
                       <p>25.5€</p>
                     </div>
                   </div>
@@ -126,8 +149,16 @@
                     <div class="card-body">
                       <h5 class="card-title">Special title treatment</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
-                      <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <input id="balloons" type="number" name="quantity"  min="0"  placeholder="quantity">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                                </div>
+                            </div>
+                        </form>
                       <p>25.5€</p>
                     </div>
                   </div>
@@ -152,7 +183,9 @@
                 <td>Identity Server</td>
                 <td>1095.00</td>
                 <td> 
-                <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <form method="POST">
+                    <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                    </form>
                 8000 en stock                    
                 </td>
                 <td>
@@ -168,7 +201,9 @@
                 <td>Thornton</td>
                 <td>59.95</td>
                 <td>
-                <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <form method="POST">
+                    <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                    </form>
                 8000 en stock
                 </td>
                 <td>
@@ -184,7 +219,9 @@
                 <td>the Bird</td>
                 <td>15.98</td>
                 <td>
-                <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <form method="POST">
+                    <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                    </form>
                 8000 en stock
                 </td>
                 <td>
@@ -200,7 +237,9 @@
                 <td>the Bird</td>
                 <td>15.98</td>
                 <td>
-                <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <form method="POST">
+                    <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                    </form>
                 8000 en stock
                 </td>
                 <td>
@@ -216,7 +255,9 @@
                 <td>the Bird</td>
                 <td>15.98</td>
                 <td>
-                <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <form method="POST">
+                    <input type="submit" name="action" value="Ajouter au panier" class="btn btn-primary "/>
+                    </form>
                 8000 en stock
                 </td>
                 <td>

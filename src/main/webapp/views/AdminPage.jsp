@@ -172,9 +172,9 @@ function drawAnnotations() {
                 <a style="text-decoration:none; color:white;">Nom Site</a>					
             </div>				
 	</header>
-        <h1 id="titre">Hello World!</h1>
+        <!--<h1 id="titre">Hello World!</h1>-->
         
-        
+        <!--<div id="piechart" style="width: 400px; height: 200px;"></div>-->
         <table class="table">
             <thead>
               <tr>
@@ -184,6 +184,11 @@ function drawAnnotations() {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td scope="col">g1</td>
+                <td scope="col">g2</td>
+                <td scope="col">g3</td>
+              </tr>
               <tr>
                    
                   <td><div id="piechart" style="width: 400px; height: 200px;"></div></td>

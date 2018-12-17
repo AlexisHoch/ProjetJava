@@ -85,40 +85,42 @@
                     <!--Home-->
                     <!--class="tab-pane fade show active" pour afficher l'onglet-->
                     <div class="tab-pane fade show active " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">                    
-                        <form>
+                        <form method="POST">
                               <div class="form-group">
                                 <label for="inputEmail4">Email</label>
-                                <p type="email" class="form-control" id="inputEmail4" placeholder="Email">kg.gh@hhh.vl</p>
+                                <!--contenteditable="true" permet de rendre la zone modifiable-->
+                                <p contenteditable="true" type="email" class="form-control" id="inputEmail4" placeholder="Email">kg.gh@hhh.vl</p>
                               </div> 
                               <div class="form-group">
                                 <label for="inputName">Name</label>
-                                <p class="form-control" id="inputName">Joffres</p>
+                                <p contenteditable="true" class="form-control" id="inputName">Joffres</p>
                               </div>
 
                               <div class="form-group">
                                 <label for="inputName">First Name</label>
-                                <p class="form-control" id="inputFirstName">Manon</p>
+                                <p contenteditable="true" class="form-control" id="inputFirstName">Manon</p>
                               </div>
 
                             <div class="form-group">
                               <label for="inputAddress">Address</label>
-                              <p class="form-control" id="inputAddress">1234 Main St</p>
+                              <p contenteditable="true" class="form-control" id="inputAddress">1234 Main St</p>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputCity">City</label>
-                                <p class="form-control" id="inputCity">Albi</p>
+                                <p contenteditable="true" class="form-control" id="inputCity">Albi</p>
                               </div>
                               <div class="form-group col-md-4">
                                 <label for="inputState">State</label>
-                                <p class="form-control" id="inputState">France</p>
+                                <p contenteditable="true" class="form-control" id="inputState">France</p>
                               </div>
                               <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <p class="form-control" id="inputZip">81000</p>
+                                <p contenteditable="true" class="form-control" id="inputZip">81000</p>
                               </div>
                             </div>
+                            <input type="submit" name="action" value="Modifier" class="btn btn-primary btn-lg btn-block"/>
                         </form>
                     </div>
                     <!--Bon de commande-->
