@@ -39,6 +39,18 @@ public class Customer {
         this.creditLimit = Credit;
     }
     
+    public Customer(int customerId, String name, String address){
+        this.customerId = customerId;
+        this.discountcode=null;
+        this.name = name;
+        this.addressLine1 = address;
+        this.addressLine2 = null;
+        this.city = city;
+        this.state = null;
+        this.phone = phone;
+        this.fax = fax;
+        this.email = null;
+    }    
     
     public int getCustomerId() {
         return customerId;
