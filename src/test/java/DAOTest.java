@@ -27,24 +27,46 @@ public class DAOTest {
 		myDAO = new DAO(myDataSource);
 	}
 
-    @Test @Ignore
+    @Test //@Ignore
     public void numberOfCustommer() throws SQLException{
-        assertEquals(myDAO.numberOfCustomers(), 17);
+        assertEquals(myDAO.numberOfCustomers(), 14);
     }
     
-    @Test @Ignore
+    @Test //@Ignore
     public void addCustomerTest() throws SQLException{
         int nmcustomers = myDAO.numberOfCustomers();
         myDAO.newAccount("L", 10096);
         assertEquals(myDAO.numberOfCustomers(), nmcustomers+1);
     }
     
-    @Test @Ignore
+    @Test //@Ignore
     public void deleteCustomer() throws SQLException{
         int nmcustomers = myDAO.numberOfCustomers();
-        myDAO.deleteCustomer(866);
+        myDAO.deleteCustomer(864);
         assertEquals(myDAO.numberOfCustomers(), nmcustomers-1);
     }
+    
+        @Test
+    public void numberInvoice() throws SQLException{
+        int nminv = myDAO.numberOfInvoices();
+        assertEquals(nminv, 2);
+    }
+    
+           @Test
+    public void addInvoice() throws SQLException{
+        int nminv = myDAO.numberOfInvoices();
+        myDAO.newInvoice(2);
+        assertEquals(myDAO.numberOfInvoices(),nminv +1 );
+    } 
+    
+        @Test
+    public void addItemToInvoice() throws SQLException{
+        int nmitm = myDAO.numberOfItems();
+        myDAO.addItemToInvoice(2, 980005, 5);
+        assertEquals(myDAO.numberOfItems(),nmitm +1 );
+    } 
+    
+
     
 
 
