@@ -61,7 +61,7 @@
         
         
 
-        <form method="POST" class="container" >
+        <form action="http://localhost:8080/ProjetJava/Servlet_Login" method="POST" class="container" >
 
                 <div class="form-group">
                     <div class="form-group">
@@ -75,8 +75,8 @@
                     </div>
                 </div>
                     <input type="submit" name="action" value="Connexion" class="btn btn-primary btn-lg btn-block"/>
-                    <input type="submit" name="action" value="Créer un compte" class="btn btn-primary btn-lg btn-block"/>                    
+                    <input type="submit" name="action" value="Creer_un_compte" class="btn btn-primary btn-lg btn-block"/>  
             </form>
-
+       
     </body>
 </html>

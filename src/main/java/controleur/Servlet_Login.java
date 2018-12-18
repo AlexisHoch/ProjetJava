@@ -10,6 +10,7 @@ import DAO.DataSourceFactory;
 import DAO.Customer;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author NoobsLord-pécé
  */
-@WebServlet(name = "Servlet_Login", urlPatterns = {"/Servlet_Login"})
+@WebServlet(name = "Servlet_Login", urlPatterns = {"/ConnexionPage.jsp"})
 public class Servlet_Login extends HttpServlet {
 
     /**
@@ -32,8 +33,7 @@ public class Servlet_Login extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     *     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
@@ -54,6 +54,25 @@ public class Servlet_Login extends HttpServlet {
             showView("ProductPage.jsp",request,response);
         }
     }
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String action = request.getParameter("action");
+        //DAO dao = new DAO(DataSourceFactory.getDataSource());
+        if(actionIs(request,"Connexion")){
+            startSession(request,response,"Connexion");
+        }
+        else if(actionIs(request,"Deconnexion")){
+            exitSession(request,response);
+        }
+        else if (actionIs(request,"Creer_un_compte")){
+            showView("CreateComptePage.jsp",request,response);
+        }
+        else{
+            showView("ConnexionPage.jsp",request,response);
+        }
+    }
     private void startSession(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
@@ -61,13 +80,14 @@ public class Servlet_Login extends HttpServlet {
         String log = request.getParameter("inputEmail4");
         String mdp = request.getParameter("inputPassword4");
         
-        if (log.equals("admin@admin") && mdp.equals("admin")) {
-            switch(action){
-                case "Connexion":
-                showView("ClientPage.jsp", request, response);
-            showView("AdminPage.jsp", request, response);
-            break; 
-            }
+        //log.equals("admin@admin") && mdp.equals("admin")
+        if (action.equals("Connexion")) {
+            //RequestDispatcher dispat = request.getRequestDispatcher("/views/AdminPage.jsp");
+            //dispat.forward(request,response);
+            //if (log.equals("admin@admin") && mdp.equals("admin")){
+                
+                    showView("AdminPage.jsp", request, response);
+            //}
             
         } else {
             
@@ -89,27 +109,31 @@ public class Servlet_Login extends HttpServlet {
             session.setAttribute("city", c.getCity());
             session.setAttribute("credit", c.getCreditLimit());
             
-            if ((log == null ? email == null : log.equals(email)) && (mdp == null ? id == null : mdp.equals(id))) {
-                request.setAttribute("correct", true);
+            /*if ((log == null ? email == null : log.equals(email)) && (mdp == null ? id == null : mdp.equals(id))) {
+                //request.setAttribute("correct", true);
                 switch (action) {
                     case "Connexion":
-                        showView("client_side_view.jsp", request, response);
+                        showView("ClientPage.jsp", request, response);
                         break;
                 }
             } else {
                 request.setAttribute("correct", false);
-            }
+            }*/
+            showView("ClientPage.jsp",request,response);
         }
     }
+        private boolean actionIs(HttpServletRequest request,String action){
+            return action.equals(request.getParameter("action"));
+        }
     
         private void exitSession(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        showView("login_test.jsp", request, response);
+        showView("ConnexionPage.jsp", request, response);
     }
         
         private void showView(String jsp, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletConfig().getServletContext().getRequestDispatcher("/" + jsp).forward(request, response);
+        getServletConfig().getServletContext().getRequestDispatcher("/views/" + jsp).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
