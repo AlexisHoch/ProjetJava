@@ -12,6 +12,9 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+        
+    
     </head>
     <style>
 
@@ -60,6 +63,22 @@
         #result{
             width: 30px;
         }
+        
+        header .Deconnexion{
+                float:right;
+                margin-top:-2px;
+                padding-right:10px;
+                 
+                
+        }
+
+        .Deconnexion input{
+                color:white;
+                width:100%;
+                display: inline-block;
+                text-align: center;
+                font-size : 15px;
+        }
     </style>
 
     <head>
@@ -76,14 +95,19 @@
 				<div class="name">									
 						<a style="text-decoration:none; color:white;">
 							Nom Site
-						</a>					
+						</a>	
+                                    <div class="Deconnexion">
+                                        <form method="POST" >
+                                                <input type="submit" name="action" value="Déconnexion" class="btn btn-primary" >
+                                        </form>
+                                    </div>
                                 </div>
 				
 	</header>
         
         <h1 id="titre">Produit</h1>
         
-        <div class="container">
+<!--        <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                   <div class="card">
@@ -164,7 +188,7 @@
                   </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="container">
         <table class="table">
             <thead class="thead-dark">

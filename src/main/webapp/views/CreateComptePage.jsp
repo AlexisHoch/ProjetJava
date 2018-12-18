@@ -14,6 +14,9 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+        
+    
     </head>
     <style>
 
@@ -54,12 +57,29 @@
             font-style: italic;
             font-weight: bold;
         }    
+        header .Deconnexion{
+                float:right;
+                margin-top:-2px;
+                padding-right:10px;  
+        }
+        .Deconnexion input{
+                color:white;
+                width:100%;
+                display: inline-block;
+                text-align: center;
+                font-size : 15px;
+        }
     </style>
     <body>
         
         <header class="header">	
             <div class="name">	
-                <a style="text-decoration:none; color:white;">Nom Site</a>					
+                <a style="text-decoration:none; color:white;">Nom Site</a>	
+                <div class="Deconnexion">
+                    <form method="POST" >
+                            <input type="submit" name="action" value="Déconnexion" class="btn btn-primary" >
+                    </form>
+                </div>
             </div>				
 	</header>
         <h1 id="titre">Création de votre compte</h1>
@@ -69,29 +89,29 @@
 
                       <div class="form-group">
                         <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control is-valid" id="inputEmail4" placeholder="Email">
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                       </div> 
 
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                       </div>
                     </div>
                     <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputName">Nom</label>
-                                <p contenteditable="true" class="form-control" id="inputName">Joffres</p>
+                                <input  class="form-control" id="inputName" value="Joffres">
                               </div>
 
                               <div class="form-group col-md-6">
                                 <label for="inputName">Prénom</label>
-                                <p contenteditable="true" class="form-control" id="inputFirstName">Manon</p>
+                                <input class="form-control" id="inputFirstName" value="Manon">
                               </div>
                     </div>
                     <div class="form-group">

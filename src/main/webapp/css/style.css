@@ -1,20 +1,10 @@
 .container{
-/*border: 1px solid blue; 
-border-radius: 5px;*/
-
 padding: 5px;
 width: 700px;
 
 height: auto;
-
 margin : 75px auto auto;
-  
-/*line-height: 75px;*/ 
-/*color: black;
-font-weight: bold;
-font-size: 20px ;*/
 }
-
 
 form button{
 width:100%;
@@ -26,21 +16,48 @@ width:100%;
      
 }       
         
-        .header {  
-            position:fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            /*border-bottom: 2px solid tomato;*/ 		
-            background: black;   
-            z-index: 4;
-          }
+.header {  
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: black; 
+    z-index: 4;
+}
           
-       .name {			
-            /*text-align: center;*/ 
-            font-size : 30px;
-            /*line-height: 3;*/
-            font-style: italic;
-            font-weight: bold;
-        }
+.name {	
+    font-size : 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+.cont{
+    padding: 5px;
+    width: 900px;
+    height: auto;
+    margin : 50px auto auto;
+}
+
+tr{
+    text-align: center;
+}
+#result{
+    width: 30px;
+}
+.admin{
+    margin-top:80px;
+}
+        
+header .Deconnexion{
+    float:right;
+    margin-top:-2px;
+    padding-right:10px;
+}
+
+.Deconnexion input{
+    color:white;
+    width:100%;
+    display: inline-block;
+    text-align: center;
+    font-size : 15px;
+}
