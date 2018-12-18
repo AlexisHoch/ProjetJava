@@ -51,7 +51,7 @@ public class Servlet_Login extends HttpServlet {
             }
         }
         else{
-            showView("AdminPage",request,response);
+            showView("ProductPage.jsp",request,response);
         }
     }
     private void startSession(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
