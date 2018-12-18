@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -26,19 +27,19 @@ public class DAOTest {
 		myDAO = new DAO(myDataSource);
 	}
 
-    @Test
+    @Test @Ignore
     public void numberOfCustommer() throws SQLException{
         assertEquals(myDAO.numberOfCustomers(), 17);
     }
     
-    @Test
+    @Test @Ignore
     public void addCustomerTest() throws SQLException{
         int nmcustomers = myDAO.numberOfCustomers();
         myDAO.newAccount("L", 10096);
         assertEquals(myDAO.numberOfCustomers(), nmcustomers+1);
     }
     
-    @Test
+    @Test @Ignore
     public void deleteCustomer() throws SQLException{
         int nmcustomers = myDAO.numberOfCustomers();
         myDAO.deleteCustomer(866);

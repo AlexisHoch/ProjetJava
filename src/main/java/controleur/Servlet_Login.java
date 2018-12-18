@@ -10,8 +10,6 @@ import DAO.DataSourceFactory;
 import DAO.Customer;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +37,7 @@ public class Servlet_Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
+        //DAO dao = new DAO(DataSourceFactory.getDataSource());
         if(action != null){
             switch (action){
                 case "Connexion":
@@ -47,23 +46,28 @@ public class Servlet_Login extends HttpServlet {
                 case "Deconnexion":
                     exitSession(request,response);
                     break;
-                
+                case ("Créer un compte"):
+                    break;   
             }
         }
         else{
-            showView("ConnexionPage.jsp",request,response);
+            showView("AdminPage",request,response);
         }
     }
     private void startSession(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
         
-        String heidi = request.getParameter("id");
-        String mdp = request.getParameter("mdp");
+        String log = request.getParameter("inputEmail4");
+        String mdp = request.getParameter("inputPassword4");
         
-        if (heidi.equals("admin") && mdp.equals("admin")) {
-            
-            showView("AdminProduct.jsp", request, response);
+        if (log.equals("admin@admin") && mdp.equals("admin")) {
+            switch(action){
+                case "Connexion":
+                showView("ClientPage.jsp", request, response);
+            showView("AdminPage.jsp", request, response);
+            break; 
+            }
             
         } else {
             
@@ -71,7 +75,7 @@ public class Servlet_Login extends HttpServlet {
             Customer c = null;
             try {
                 DAO dao = new DAO(DataSourceFactory.getDataSource());
-                c = dao.Customer(heidi);
+                c = dao.Customer(log);
             } catch (SQLException ex) {}
             
             String email = c.getEmail();
@@ -85,9 +89,13 @@ public class Servlet_Login extends HttpServlet {
             session.setAttribute("city", c.getCity());
             session.setAttribute("credit", c.getCreditLimit());
             
-            if ((heidi == null ? email == null : heidi.equals(email)) && (mdp == null ? id == null : mdp.equals(id))) {
+            if ((log == null ? email == null : log.equals(email)) && (mdp == null ? id == null : mdp.equals(id))) {
                 request.setAttribute("correct", true);
-                showView("client_side_view.jsp", request, response);
+                switch (action) {
+                    case "Connexion":
+                        showView("client_side_view.jsp", request, response);
+                        break;
+                }
             } else {
                 request.setAttribute("correct", false);
             }

@@ -44,6 +44,7 @@ public class ApplicationListener implements ServletContextListener{
 
         try{
             DAO dao=new DAO(DataSourceFactory.getDataSource());
+            int temp=dao.numberOfCustomers();
             Logger.getLogger("ProjetJava").log(Level.INFO, "Database exists");
             res=true;
         }catch(SQLException e){
@@ -63,13 +64,13 @@ public class ApplicationListener implements ServletContextListener{
            Connection connection = DataSourceFactory.getDataSource().getConnection();
            int res = ij.runScript(connection,this.getClass().getResourceAsStream("export.sql"), "UTF-8", System.out,"UTF-8");
            if (res==0){
-               Logger.getLogger("ProjetJEE").log(Level.INFO, "Database succesfully created");
+               Logger.getLogger("ProjetJava").log(Level.INFO, "Database succesfully created");
                 } 
            else {
-                Logger.getLogger("ProjetJEE").log(Level.SEVERE, "Errors creating database");
+                Logger.getLogger("ProjetJava").log(Level.SEVERE, "Errors creating database");
 		}
        }catch(UnsupportedEncodingException | SQLException e) {
-			Logger.getLogger("ProjetJEE").log(Level.SEVERE, null, e);
+			Logger.getLogger("ProjetJava").log(Level.SEVERE, null, e);
 		}
            
    }

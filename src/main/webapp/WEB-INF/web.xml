@@ -6,26 +6,19 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <session-config>
         <session-timeout>
-            2
+            20
         </session-timeout>
     </session-config>
     <welcome-file-list>       
         <welcome-file>views/ConnexionPage.jsp</welcome-file>  <!--Permet de définir la page connexionPage comme page d'accueil-->
     </welcome-file-list>
     <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>Servlet.NewServlet</servlet-class>
+        <servlet-name>Servlet_Login</servlet-name>
+        <servlet-class>controleur.Servlet_Login</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/ProjetJava</url-pattern>
+        <servlet-name>Servlet_Login</servlet-name>
+        <url-pattern>/Servlet_Login</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/CreateComptePage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/ConnexionPage</url-pattern>
-    </servlet-mapping>
+
 </web-app>
