@@ -146,6 +146,28 @@ public class DAO {
 	}
         
         
+        public List<Customer> customersInCity(String city) throws SQLException {
+		List<Customer> result = new LinkedList<>();
+
+		String sql = "SELECT * FROM Customer WHERE City = ?";
+		try (Connection connection = myDataSource.getConnection();
+		     PreparedStatement stmt = connection.prepareStatement(sql)) {
+			stmt.setString(1, city);
+			try (ResultSet rs = stmt.executeQuery()) {
+				while (rs.next()) {
+					int id = rs.getInt("ID");
+					String name = rs.getString("FirstName");
+					String address = rs.getString("Street");
+					Customer c = new Customer(id, name, address);
+					result.add(c);
+				}
+			}
+		}
+
+		return result ;
+	}
+        
+        
         public int numberOfInvoices() throws SQLException{
             
             int results=0;
@@ -163,13 +185,37 @@ public class DAO {
         }
         
         
+        public List invoicesForCustomer(int customerID) throws SQLException{
+            
+            List<Invoice> result = new LinkedList<>();
+
+
+		String sql = "SELECT * AS NUMBER FROM INVOICE WHERE CUSTOMERID = ?";
+		try (Connection connection = myDataSource.getConnection();
+		     PreparedStatement stmt = connection.prepareStatement(sql)) {
+                        stmt.setInt(1, customerID);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+                                int customerId = rs.getInt("CUSTOMERID");
+                                float total = rs.getInt("TOTAL");
+                                Invoice i = new Invoice(id, customerId, total);
+                                result.add(i);
+			}
+		}
+		return result;
+            
+        }
+        
+        
         public void newInvoice(int customerID) throws SQLException{
             
-            String sql = "INSERT INTO Invoice(ID, CustomerID) VALUES ( (SELECT MAX(ID)+1 FROM Invoice), ?)";
+            String sql = "INSERT INTO Invoice(ID, CustomerID, Total) VALUES ( (SELECT MAX(ID)+1 FROM Invoice), ?,  ?)";
             try(Connection myConnection = myDataSource.getConnection();
                     PreparedStatement customerStatement = myConnection.prepareStatement(sql)){
                     
                     customerStatement.setInt(1, customerID);
+                    customerStatement.setInt(2, 0);
                     System.out.println(customerStatement.toString());
                     customerStatement.executeUpdate();
                     }
