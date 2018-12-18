@@ -46,23 +46,23 @@ public class DAOTest {
         assertEquals(myDAO.numberOfCustomers(), nmcustomers-1);
     }
     
-        @Test
+        @Test //@Ignore
     public void numberInvoice() throws SQLException{
         int nminv = myDAO.numberOfInvoices();
         assertEquals(nminv, 2);
     }
     
-           @Test
+           @Test //@Ignore
     public void addInvoice() throws SQLException{
         int nminv = myDAO.numberOfInvoices();
         myDAO.newInvoice(2);
         assertEquals(myDAO.numberOfInvoices(),nminv +1 );
     } 
     
-        @Test
+        @Test //@Ignore
     public void addItemToInvoice() throws SQLException{
         int nmitm = myDAO.numberOfItems();
-        myDAO.addItemToInvoice(2, 980005, 5);
+        myDAO.addItemToInvoice(4, 980001, 5);
         assertEquals(myDAO.numberOfItems(),nmitm +1 );
     } 
     

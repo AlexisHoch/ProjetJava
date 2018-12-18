@@ -260,6 +260,7 @@ public class DAO {
             String sql = "INSERT INTO Item(Item, InvoiceID, ProductID, Quantity, Cost) VALUES ( (SELECT MAX(ID)+1 FROM Invoice), ?, ?, ?, ?)";
             String cost = "SELECT Purchase_cost FROM PRODUCT WHERE PRODUCT_ID = ?";
             int totalCostItem;
+            int totalInvoice;
             try(Connection myConnection = myDataSource.getConnection();
                     
                     //On, va chercher le cout du produit
@@ -280,11 +281,27 @@ public class DAO {
                     customerStatement.setInt(2, productID);
                     customerStatement.setInt(3, quantity);
                     customerStatement.setInt(4, totalCostItem);
-                    System.out.println(customerStatement.toString());
                     customerStatement.executeUpdate();
                     
  
             }
+            
+            //On modifie le total de l'invoice
+        try(Connection myConnection = myDataSource.getConnection();
+            PreparedStatement modifyInvoice = myConnection.prepareStatement("UPDATE INVOICE SET TOTAL = ?")){
+                try(Connection myConnection1 = myDataSource.getConnection();
+
+                        PreparedStatement modifyInvoice1 = myConnection1.prepareStatement("SELECT TOTAL FROM INVOICE WHERE ID = ?")){
+                    modifyInvoice1.setInt(1, invoiceID);
+                    ResultSet res = modifyInvoice1.executeQuery();
+                    res.next();
+                    totalInvoice=res.getInt("TOTAL");
+                }
+            totalInvoice+=totalCostItem;
+            modifyInvoice.setInt(1,totalInvoice);
+            modifyInvoice.executeUpdate();
+
+        }
         }
         
         public int numberOfItems() throws SQLException {
